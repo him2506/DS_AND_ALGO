@@ -1,0 +1,24 @@
+    
+def maxFind(nums,k):
+    i = 0
+    j = 0
+    s = 0
+    c_max = float('-inf')
+    while j< len(nums):
+        s += nums[j]
+        if j-i+1<k:
+            j +=1
+        elif j-i+1 ==k:
+            c_max = max(c_max,s)
+            s = s - nums[i]
+            i +=1
+            j +=1
+    return c_max
+
+l = [-8,2,6,10,3,1,2]
+k = 3
+print(maxFind(l,k))
+            
+            
+            
+    
