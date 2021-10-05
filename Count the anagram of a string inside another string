@@ -1,0 +1,40 @@
+# Count the anagram of a string inside another string
+    
+def countAna(s1,s2):
+    dic1 = {}
+    dic2 = {}
+    for i in s2:
+        if i in dic2:
+            dic2[i] +=1
+        else:
+            dic2[i] = 1
+    i = 0
+    j = 0
+    count = 0
+    while j < len(s1):
+        # calculations
+        if s1[j] in dic1:
+            dic1[s1[j]] +=1
+        else:
+            dic1[s1[j]] = 1
+        
+        if j-i+1 < len(s2):
+            j+=1
+        elif j-i+1 == len(s2):
+            # result
+            if dic1==dic2:
+                count +=1
+            
+            # maintain window
+            if dic1[s1[i]] == 1:
+                del dic1[s1[i]]
+            else:
+                dic1[s1[i]] -=1
+            i+=1
+            j+=1
+    return count
+
+
+s1 = 'foxoxxofdsxfgodwofx'
+s2 = 'fox'
+print(countAna(s1,s2))
