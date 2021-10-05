@@ -27,3 +27,38 @@ def fisrtNegative(nums,k):
 l = [-8, 2, 3, -6, 10]
 k = 1
 print(fisrtNegative(l,k))
+
+
+
+# More efficient approach.
+O(N) complexity.
+# First  Negative number in every subarray of size K
+
+def fisrtNegative(nums,k):
+    i = 0
+    j = 0
+    result = []
+    current_ne = -1
+    while j < len(nums):
+        if nums[j] <0:
+            if current_ne == -1:
+                current_ne = j
+                
+        if j-i+1 <k:
+            j+=1
+        elif j-i+1 == k:
+            if current_ne < i:
+                for m in range(i,j+1):
+                    if nums[m] <0:
+                        current_ne = j
+                        break
+            result.append(nums[current_ne])
+            i+=1
+            j+=1
+    return result
+
+
+l = [-8, 2, 3, -6, 10,-7]
+k = 3
+print(fisrtNegative(l,k))
+
