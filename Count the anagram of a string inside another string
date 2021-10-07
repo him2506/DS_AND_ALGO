@@ -33,12 +33,15 @@ def countAna(s1,s2):
             i+=1
             j+=1
     return count
-    
-    
-    
-    
-    # Another method
-    # Count the anagram of a string inside another string
+   
+s1 = 'foxoxxofdsxfgodwofx'
+s2 = 'fox'
+print(countAna(s1,s2))
+
+
+
+# Another Method
+# Count the anagram of a string inside another string
     
 def countAna(s1,s2):
     dic2 = {}
@@ -76,11 +79,6 @@ def countAna(s1,s2):
             i+=1
             j+=1
     return result
-
-s1 = 'foxoxxofdsxfgodwofx'
-s2 = 'fox'
-print(countAna(s1,s2))
-
 
 s1 = 'foxoxxofdsxfgodwofx'
 s2 = 'fox'
