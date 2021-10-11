@@ -1,0 +1,40 @@
+# Pick maximum toys
+Problem Statement :- pick maximum nuber of toys from a row, given that we have to pick only 2 types of toys. But we can pick any toy any number of times.
+
+def pickToy(s):
+    i = 0
+    j = 0
+    ans = 0
+    count = 0
+    dic ={}
+    while j < len(s):
+        if s[j] in dic:
+            dic[s[j]] += 1
+        else:
+            dic[s[j]] = 1
+            count +=1
+            
+        
+        if count == 2:
+            # ans
+            ans = max(ans,j-i+1)
+           
+        if count >2:
+            while count > 2:
+                dic[s[i]] -=1
+                if dic[s[i]] ==0:
+                    count -=1
+                i +=1
+            if count == 2:
+                ans = max(ans,j-i+1)
+            
+        j +=1       
+                
+        
+    return ans
+    
+
+# s = 'cabbdec'
+s = 'accab'
+print(pickToy(s))
+            
