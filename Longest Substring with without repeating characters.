@@ -1,0 +1,27 @@
+# Longest Substring with without repeating characters.
+
+def longSub(s):
+    i = 0
+    j = 0
+    ans = 0
+    count = 0
+    dic ={}
+    while j < len(s):
+        if s[j] in dic:
+            i = j
+            dic = {}
+            dic[s[j]] = 1
+            count = 1
+        else:
+            dic[s[j]] = 1
+            count +=1
+        
+        ans = max(ans,count)
+        j+=1
+        
+    return ans
+    
+
+# s = 'cabbdec'
+s = 'pwwkew'
+print(longSub(s))
