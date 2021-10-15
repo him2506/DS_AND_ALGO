@@ -1,39 +1,46 @@
 # minimum window substring
 
+# minimum window substring
+
 def minwindowSubstring(s,t):
     dic2 = {}
-    count = 0
+    k = 0
     for i in t:
         if i in dic2:
             dic2[i] +=1
         else:
             dic2[i] = 1
-            count = 1
+            k += 1
     
     i = 0 
     j = 0
-    ans = [-1,-1]
+    ans = [-1,-1,float('inf')]
+    dic1 = {}
+    count = 0
     while j <len(s):
-        if s[j] in dic2:
-            dic2[s[j]] -=1
-            if dic2[s[j]] == 0:
-                count -=1
+        if s[j] in t:
+            if s[j] in dic1:
+                dic1[s[j]] +=1
+            else:
+                dic1[s[j]] =1
+                count +=1
         
-        if count > 0:
+        if count < k:
             j +=1
-        if count == 0:
-            if ans[1]-ans[0] < j-i:
+        if count == k:
+            if ans[2] > j-i:
                 ans[0] = i
                 ans[1] = j
-                
-            j+=1
-        i+=1
+                ans[2] = j-i+1
+            j +=1
         
     return ans
     
     
 s = 'tostartpractice'
 t = 'toc'
-print(minwindowSubstring(s,t))
+x = minwindowSubstring(s,t)
+print(s[x[0]:x[1]+1])
+print(x[2])
             
             
