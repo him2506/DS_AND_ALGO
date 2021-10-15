@@ -1,7 +1,5 @@
 # minimum window substring
 
-# minimum window substring
-
 def minwindowSubstring(s,t):
     dic2 = {}
     k = 0
@@ -18,16 +16,15 @@ def minwindowSubstring(s,t):
     dic1 = {}
     count = 0
     while j <len(s):
-        if s[j] in t:
-            if s[j] in dic1:
-                dic1[s[j]] +=1
-            else:
-                dic1[s[j]] =1
-                count +=1
+        if s[j] in dic2:
+            if dic2[s[j]] > 0:
+                dic2[s[j]] -=1
+                if dic2[s[j]] ==0:
+                    k -=1
         
-        if count < k:
+        if k > 0:
             j +=1
-        if count == k:
+        if k == 0:
             if ans[2] > j-i:
                 ans[0] = i
                 ans[1] = j
@@ -37,10 +34,12 @@ def minwindowSubstring(s,t):
     return ans
     
     
-s = 'tostartpractice'
-t = 'toc'
+s = 'tosarpractice'
+t = 'toct'
 x = minwindowSubstring(s,t)
 print(s[x[0]:x[1]+1])
 print(x[2])
+            
+            
             
             
