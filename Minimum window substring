@@ -13,29 +13,35 @@ def minwindowSubstring(s,t):
     i = 0 
     j = 0
     ans = [-1,-1,float('inf')]
-    dic1 = {}
-    count = 0
+
     while j <len(s):
         if s[j] in dic2:
-            if dic2[s[j]] > 0:
-                dic2[s[j]] -=1
-                if dic2[s[j]] ==0:
-                    k -=1
-        
+            dic2[s[j]] -=1
+            if dic2[s[j]] ==0:
+                k -=1
+ 
         if k > 0:
             j +=1
         if k == 0:
+            while k == 0:
+                if s[i] in dic2: 
+                    if dic2[s[i]] ==0:
+                        break
+                    dic2[s[i]] +=1
+                i +=1
+            
             if ans[2] > j-i:
                 ans[0] = i
                 ans[1] = j
                 ans[2] = j-i+1
+               
             j +=1
         
     return ans
     
     
-s = 'tosarpractice'
-t = 'toct'
+s = 'xbssosbdtmnqotss'
+t = 'ssto'
 x = minwindowSubstring(s,t)
 print(s[x[0]:x[1]+1])
 print(x[2])
