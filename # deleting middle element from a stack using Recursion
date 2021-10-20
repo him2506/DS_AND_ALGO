@@ -1,0 +1,21 @@
+# deleting middle element from a stack using Recursion
+import math
+def delete_f(l,k):
+    # Basic condition
+    if k == 1:
+        l.pop()
+        return l
+    
+    # Hypothesis
+    m = l.pop()
+    delete_f(l,k-1)
+    
+    
+    # Induction
+    l.append(m)
+    return l
+    
+
+l = [1,4,-2,5,8]
+k = math.floor((len(l)/2)+1)
+print(delete_f(l,k))
