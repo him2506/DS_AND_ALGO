@@ -1,0 +1,23 @@
+def permutation(l,i,j,m):
+    # Basic condition
+    if i+1==j:
+        return l
+        
+    # Hypothesis
+    for x in range(i,j):
+        l[i],l[x] = l[x],l[i]
+        permutation(l,i+1,j,m)
+        g = l.copy()
+        m.append(g)
+        l[x],l[i] = l[i],l[x]
+
+    # Induction
+    return m
+
+l = [1,2,3,4,6]
+i = 0
+j = len(l)
+m = []
+print(permutation(l,i,j,m))
+
+
