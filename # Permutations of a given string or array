@@ -2,7 +2,7 @@ def permutation(l,i,j,m):
     # Basic condition
     if i+1==j:
         m.append(l.copy())
-        return 
+        return m
         
     # Hypothesis
     for x in range(i,j):
