@@ -12,12 +12,19 @@ def permutation(l,i,j,m):
         l[x],l[i] = l[i],l[x]
 
     # Induction
-    return m
+    p = []
+    for i in m:
+        if i not in p:
+            p.append(i)
+    return p
+        
 
 l = [1,2,3,4,6]
 i = 0
 j = len(l)
 m = []
-print(permutation(l,i,j,m))
+x = permutation(l,i,j,m)
+print(x)
+print(len(x))
 
 
