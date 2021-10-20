@@ -1,0 +1,30 @@
+# Reverse a stack using Recursion
+
+def reverse_stack(l):
+    # Basic condition
+    if len(l)==0:
+        return l
+    
+    # Hypothesis
+    m = l.pop()
+    reverse_stack(l)
+
+    
+    # Induction
+    def m_add(l,m):
+        if len(l) == 0:
+            l.append(m)
+            return l
+    
+        x = l.pop()
+        m_add(l,m)
+        
+        l.append(x)
+        return l
+        
+    m_add(l,m)
+    return l
+        
+
+l = [1,4,-2,5,8]
+print(reverse_stack(l))
