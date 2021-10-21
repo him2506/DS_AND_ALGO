@@ -1,0 +1,25 @@
+# Tower of Brahma
+
+def brahma(s,h,d,i):
+    # Basic Condition
+    if len(s)==i+1:
+        d.append(s[0])
+        del s[0]
+        return 
+
+    # Hypothesis
+    i +=1
+    brahma(s[i:],d,h,i)
+    d.append(s[i-1])
+    del s[i-1]
+    x = 0  
+    brahma(h,s,d,x)
+    return d
+    
+s = [2,1]
+h = []
+d = []
+i = 0
+brahma(s,h,d,i)
+print(s)
+print(d)
