@@ -3,20 +3,22 @@
 def brahma(s,h,d,i):
     # Basic Condition
     if len(s)==i+1:
-        d.append(s[0])
-        del s[0]
-        return 
+        d.append(s[i])
+        del s[i]
+        return d
 
     # Hypothesis
     i +=1
-    brahma(s[i:],d,h,i)
+    #s = s[i:].copy()
+    brahma(s,d,h,i)
     d.append(s[i-1])
     del s[i-1]
     x = 0  
+    # print(s)
     brahma(h,s,d,x)
     return d
     
-s = [2,1]
+s = [3,2,1]
 h = []
 d = []
 i = 0
