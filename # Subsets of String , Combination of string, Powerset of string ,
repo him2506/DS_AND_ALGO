@@ -1,0 +1,28 @@
+# Subsets of String , Combination of string, Powerset of string
+
+def subsets(s,o,r):
+    # Base condition
+    if len(s) == 0:
+        r.append(o)
+        return 
+    
+    # Decision Tree
+    # 1. In First output we do not take first character of string.
+    o1 = o
+    # 2. In second output we take first character of string.
+    o2 = o + s[0]
+    
+    #Since We took decision for fisrt character hence we remove it from string
+    s = s[1:]
+    
+    # Here we again call the function on output1 and output2
+    subsets(s,o1,r)
+    subsets(s,o2,r)
+    
+    return 
+
+s = 'abc'
+o = ''
+r = []
+subsets(s,o,r)
+print(r)
