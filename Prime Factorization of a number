@@ -1,4 +1,4 @@
-# Prime Factorization of a number, total No of factors
+# Prime Factorization of a number, total No of factors , Total no of divisor
 
 def primefactor(n):
     x = int(n**0.5)+1
@@ -32,7 +32,7 @@ def primefactor(n):
             # s= s*(count + 1)
             print([i,count])
     return l
-    # return s   (Total factor of a number) 
+    # return s   (Total factor of a number)  (Total No of divisor)
         
 
 n = 12
