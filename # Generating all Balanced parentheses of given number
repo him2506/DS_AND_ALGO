@@ -1,0 +1,41 @@
+# Generating all Balanced parentheses of given number
+# Example:- n = 2 then we have 2 - '(' , 2 - ')'. For n = 2 we can make these balanced parentheses - '(())', '()()'
+for n = 3 :- '((()))', '(()())', '()(())', '()()()'
+for n = 4 :- '(((())))', '((()()))', '(()(()))', '(()()())', '()((()))', '()(()())', '()()(())', '()()()()'
+
+
+def B_parentheses(n,out,m,l):
+    # Base condition
+    if n == 0:
+        while len(out) <l:
+            out += ')'
+        m.append(out)
+        return m
+    
+    # Hypothesis
+    # try except used for starting case when our out will be empty.then we get error hence we use except for once for starting
+    try:
+        if out[-1] == '(':
+            out1 = out + '('
+            out2 = out + ')'
+            B_parentheses(n-1,out1,m,l)
+            # Since '(' not included in out2 hence our n will not decrese.
+            B_parentheses(n,out2,m,l)
+        else:
+            out = out + '('
+            B_parentheses(n-1,out,m,l)
+    except:
+        out = out + '('
+        B_parentheses(n-1,out,m,l)
+    return m    
+        
+n = 4
+out = ''
+m = []
+l = n*2
+print(B_parentheses(n,out,m,l))
+        
+        
+
+    
+    
