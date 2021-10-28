@@ -30,5 +30,33 @@ print(letterPerm(s,out,m))
 ['a1b2', 'a1B2', 'A1b2', 'A1B2']
         
 
+
+
+def letterPerm(s,out,m,i):
+    # Base codition
+    if i == len(s):
+        m.append(out)
+        return m
+    
+    # hypothesis
+    if ord(s[i]) not in range(48,58):
+        out1 = out + s[i].lower()
+        out2 = out + s[i].upper()
+        #s = s[1:]
+        letterPerm(s,out1,m,i+1)
+        letterPerm(s,out2,m,i+1)
+    else:
+        out1 = out + s[i]
+        #s = s[1:]
+        letterPerm(s,out1,m,i+1)
+        
+    return m # ye return sabse phle wale function k return h. vo return m krega
+        
+s = 'a1b2'
+out = ''
+m = []
+i = 0 
+print(letterPerm(s,out,m,i))
+print(s)
     
     
