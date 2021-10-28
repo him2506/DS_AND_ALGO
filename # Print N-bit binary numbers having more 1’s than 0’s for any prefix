@@ -1,0 +1,29 @@
+# Print N-bit binary numbers having more or equal 1’s than 0’s for any prefix.
+
+def binary(n,result,i,j,out):
+    # Basic condition
+    if len(out) == n:
+        result.append(out)
+        return result
+
+    #Hypothesis
+    if i == j:
+        out1 = out + '1'
+        binary(n,result,i+1,j,out1)
+    else:
+        out1 = out + '1'
+        out2 = out + '0'
+        binary(n,result,i+1,j,out1)
+        binary(n,result,i,j+1,out2)
+        
+    return result
+    
+n = 5
+i = 0 # ( 1s = 0)
+j = 0 # ( 0s = 0)
+result = []
+out = ''
+print(binary(n,result,i,j,out))
+
+
+['11111', '11110', '11101', '11100', '11011', '11010', '11001', '10111', '10110', '10101']
