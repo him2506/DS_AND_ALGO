@@ -20,3 +20,10 @@ print(game_death(n,k,l,i))
 
 
 # Ans :- 19
+
+
+
+
+# Mathematical Solution:-
+N = 2**h + l   (where h will be highest power we can make.)
+then our surviver will be (2*l+1) Ans.
