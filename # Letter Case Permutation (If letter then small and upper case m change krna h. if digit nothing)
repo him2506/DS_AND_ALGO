@@ -1,0 +1,34 @@
+# Letter Case Permutation (If letter then small and upper case m change krna h. if digit nothing)
+
+def letterPerm(s,out,m):
+    # Base codition
+    if len(s) == 0:
+        m.append(out)
+        return m
+    
+    # hypothesis
+    if ord(s[0]) not in range(48,58):
+        out1 = out + s[0].lower()
+        out2 = out + s[0].upper()
+        s = s[1:]
+        letterPerm(s,out1,m)
+        letterPerm(s,out2,m)
+    else:
+        out1 = out + s[0]
+        s = s[1:]
+        letterPerm(s,out1,m)
+        
+    return m # ye return sabse phle wale function k return h. vo return m krega
+        
+s = 'a1b2'
+out = ''
+m = []
+
+print(letterPerm(s,out,m))
+
+        
+['a1b2', 'a1B2', 'A1b2', 'A1B2']
+        
+
+    
+    
