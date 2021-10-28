@@ -1,41 +1,42 @@
 # Generating all Balanced parentheses of given number
-# Example:- n = 2 then we have 2 - '(' , 2 - ')'. For n = 2 we can make these balanced parentheses - '(())', '()()'
-for n = 3 :- '((()))', '(()())', '()(())', '()()()'
-for n = 4 :- '(((())))', '((()()))', '(()(()))', '(()()())', '()((()))', '()(()())', '()()(())', '()()()()'
+# Example:- n = 2 then we have 2 - '(' , 2 - ')'. For n = 2 we can make these balanced parentheses - ['(())', '()()']
+for n = 3 :- ['((()))', '(()())', '(())()', '()(())', '()()()']
+for n = 4 :- ['(((())))', '((()()))', '((())())', '((()))()', '(()(()))', '(()()())', '(()())()', '(())(())', '(())()()', '()((()))', '()(()())', '()(())()', '()()(())', '()()()()']
 
-
-def B_parentheses(n,out,m,l):
+def B_parentheses(out,m,l,r):
     # Base condition
-    if n == 0:
-        while len(out) <l:
+    if l == 0:
+        while r!=0:
             out += ')'
+            r-=1
         m.append(out)
         return m
     
     # Hypothesis
-    # try except used for starting case when our out will be empty.then we get error hence we use except for once for starting
-    try:
-        if out[-1] == '(':
-            out1 = out + '('
-            out2 = out + ')'
-            B_parentheses(n-1,out1,m,l)
-            # Since '(' not included in out2 hence our n will not decrese.
-            B_parentheses(n,out2,m,l)
-        else:
-            out = out + '('
-            B_parentheses(n-1,out,m,l)
-    except:
+    
+    if l == r:
         out = out + '('
-        B_parentheses(n-1,out,m,l)
-    return m    
+        B_parentheses(out,m,l-1,r)
+    else:
+        out1 = out + '('
+        out2 = out + ')'
+        B_parentheses(out1,m,l-1,r)
+        # Since '(' not included in out2 hence our n will not decrese.
+        B_parentheses(out2,m,l,r-1)
+    return m
+
         
-n = 4
+n = 3
 out = ''
 m = []
-l = n*2
-print(B_parentheses(n,out,m,l))
+l = n # '(' 3 h
+r = l # ')' 3 h
+print(B_parentheses(out,m,l,r))
         
         
+
+    
+    
 
     
     
