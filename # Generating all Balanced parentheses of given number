@@ -21,7 +21,6 @@ def B_parentheses(out,m,l,r):
         out1 = out + '('
         out2 = out + ')'
         B_parentheses(out1,m,l-1,r)
-        # Since '(' not included in out2 hence our n will not decrese.
         B_parentheses(out2,m,l,r-1)
     return m
 
