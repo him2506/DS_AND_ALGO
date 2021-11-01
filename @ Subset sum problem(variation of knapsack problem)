@@ -1,0 +1,33 @@
+# Subset sum problem(variation of knapsack problem)
+# arr = [2,3,7,8,10] , sum = 11
+# output = is there a subset of arr which sum will be equal to 11 ?
+# Ans = {3,8} Hence Ans will be 1. 
+
+def subset_sum(wt,c):
+    n = len(wt)
+    dp = []
+    for i in range(n+1):
+        h = []
+        for j in range(c+1):
+            h.append(-1)
+        dp.append(h)
+
+    for x in range(n+1):
+        dp[x][0] = 0
+        
+    for y in range(c+1):
+        dp[0][y] = 1
+
+    for i in range(1,n+1):
+        for j in range(1,c+1):
+            if dp[i-1][j-wt[i-1]] or dp[i-1][j]:
+                dp[i][j] = 1
+            else:
+                dp[i][j] = 0
+    print(dp)
+    return dp[n][c]
+    
+    
+wt = [2,3,7,8,10]
+c = 11
+print(subset_sum(wt,c))
