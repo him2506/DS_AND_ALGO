@@ -1,5 +1,5 @@
 # Ex:- arr = [1,6,5,11]
-ans = 1 (1+6+5)-(11)
+# ans = 1 (1+6+5)-(11)
 
 
 def min_subset_sum(wt,c):
@@ -34,3 +34,4 @@ if c%2 == 0:
     x = min_subset_sum(wt,int(c/2)-1)
 else:
     x = min_subset_sum(wt,int(c/2))
+print(abs(c-2*x))
