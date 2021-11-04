@@ -42,7 +42,7 @@ if (c+diff)%2 != 0 :
 else:
     # here we assume s1 will be greater then s2.
     # hence s1 - s2 = diff and s1+s2= c, add both eqation. s1 is (diff+c)/2.
-    # so we finally find the count the subsets whoose sum will be s1. 
+    #################### so we finally find the count of the subsets whoose sum will be s1. 
     s1 = int((c+diff)/2)
     x = count_subset_diff(wt,s1)
     print(x[-1][s1])
