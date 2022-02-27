@@ -1,0 +1,52 @@
+x = 'acbcf'
+y = 'abcdaf'
+
+ans = 'abcf'
+Here we first apply lcs. then start from end value in dp and check if i th and j th element of x , y are same then add that element
+to the our ans. and reduce i and j with 1 unit. if i th and j th element of x , y are not same then find max value of dp[i-1][j] 
+and dp[i][j-1]. and reduce i if dp[i-1] is greater and vice versa.
+
+
+
+def plcs(x,y):
+    dp = []
+    m = len(x)
+    n = len(y)
+
+    for i in range(m+1):
+        q = []
+        for j in range(n+1):
+            q.append(-1)
+        dp.append(q)
+    
+    for i in range(n+1):
+        dp[0][i] = 0
+    for j in range(m+1):
+        dp[j][0] = 0
+    
+    
+    for k in range(1,m+1):
+        for r in range(1,n+1):
+            if x[k-1] == y[r-1]:
+                dp[k][r] = 1+dp[k-1][r-1]
+            else:
+                dp[k][r] = max(dp[k-1][r],dp[k][r-1])
+    i = m
+    j = n
+    s = ''
+    while i > 0 and j >0:
+        if x[i-1] == y[j-1]:
+            s += x[i-1]
+            i-=1
+            j-=1
+        else:
+            if dp[i][j-1] > dp[i-1][j]:
+                j-=1
+            else:
+                i-=1
+    print(s[::-1])
+    
+x = 'acbcf'
+y = 'abcdaf'
+
+plcs(x,y)
